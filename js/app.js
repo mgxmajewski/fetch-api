@@ -59,8 +59,8 @@ function fetchBreedImage() {
 // ------------------------------------------
 //  EVENT LISTENERS
 // ------------------------------------------
-select.addEventListener('change', fetchBreadImage);
-card.addEventListener('click', fetchBreadImage);
+select.addEventListener('change', fetchBreedImage);
+card.addEventListener('click', fetchBreedImage);
 
 
 // ------------------------------------------
