@@ -5,15 +5,32 @@ const form = document.querySelector('form');
 // ------------------------------------------
 //  FETCH FUNCTIONS
 // ------------------------------------------
+fetch('https://dog.ceo/api/breeds/list/all')
+    .then(response => response.json())
+    .then(data => generateOptions(data.message)
+
 fetch('https://dog.ceo/api/breeds/image/random')
     .then(response => response.json())
-    .then(data => console.log(data.message))
+    .then(data => generateImage(data.message))
 
 
 // ------------------------------------------
 //  HELPER FUNCTIONS
 // ------------------------------------------
+function generateOptions(data) {
+    const options = data.map(item => `
+    <option value='${item}'${item}></option>
+    `);
+    select.innerHTML = options;
+}
 
+function generateImage(data) {
+    const html = `
+    <img src='${data}' alt>
+    <p>Click to view images ${select.value}s</p>
+    `;
+    card.innerHTML = html;
+}
 
 
 // ------------------------------------------
