@@ -16,6 +16,18 @@ fetchData('https://dog.ceo/api/breeds/list')
 fetchData('https://dog.ceo/api/breeds/image/random')
     .then(data => generateImage(data.message))
 
+function fetchBreadImage(){
+    const breed = select.value;
+    const img = card.querySelector('img');
+    const p = card.querySelector('p');
+
+    fetchData(`https://dog.ceo/api/breed/${breed}/images/random`)
+        .then(data => {
+            img.src = data.message;
+            img.alt = breed;
+            p.textContent = `Click to view more ${breed}s`
+        })
+}
 
 // ------------------------------------------
 //  HELPER FUNCTIONS
@@ -40,7 +52,8 @@ function generateImage(data) {
 // ------------------------------------------
 //  EVENT LISTENERS
 // ------------------------------------------
-
+select.addEventListener('change', fetchBreadImage);
+card.addEventListener('click', fetchBreadImage);
 
 
 // ------------------------------------------
